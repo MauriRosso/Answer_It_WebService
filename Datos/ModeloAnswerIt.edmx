@@ -1,0 +1,1144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AnswerItDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Denuncias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="motivo" Type="int" Nullable="false" />
+          <Property Name="reputacion_descontada" Type="int" />
+        </EntityType>
+        <EntityType Name="DenunciasPreguntas">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_pregunta" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_pregunta" Type="int" Nullable="false" />
+          <Property Name="autor" Type="int" Nullable="false" />
+          <Property Name="motivo" Type="int" Nullable="false" />
+          <Property Name="fecha_denuncia" Type="datetime" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DenunciasRespuestas">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_respuesta" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_respuesta" Type="int" Nullable="false" />
+          <Property Name="autor" Type="int" Nullable="false" />
+          <Property Name="motivo" Type="int" Nullable="false" />
+          <Property Name="fecha_denuncia" Type="datetime" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Medallas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+          <Property Name="material" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="MedallasUsuarios">
+          <Key>
+            <PropertyRef Name="id_medalla" />
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_medalla" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="contenido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="autor" Type="int" Nullable="false" />
+          <Property Name="id_categoria" Type="int" Nullable="false" />
+          <Property Name="visitas" Type="int" />
+          <Property Name="puntaje" Type="int" Nullable="false" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="denunciado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreguntasTags">
+          <Key>
+            <PropertyRef Name="id_pregunta" />
+            <PropertyRef Name="id_tag" />
+          </Key>
+          <Property Name="id_pregunta" Type="int" Nullable="false" />
+          <Property Name="id_tag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Privilegios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="reputacion_necesaria" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="256" />
+          <Property Name="tipo_privilegio" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PrivilegiosUsuarios">
+          <Key>
+            <PropertyRef Name="id_privilegio" />
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_privilegio" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Respuestas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contenido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="autor" Type="int" Nullable="false" />
+          <Property Name="id_pregunta" Type="int" Nullable="false" />
+          <Property Name="puntaje" Type="int" Nullable="false" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+          <Property Name="imagen" Type="nvarchar(max)" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="denunciado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RespuestasTags">
+          <Key>
+            <PropertyRef Name="id_respuesta" />
+            <PropertyRef Name="id_tag" />
+          </Key>
+          <Property Name="id_respuesta" Type="int" Nullable="false" />
+          <Property Name="id_tag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="256" />
+          <Property Name="nombre_usuario" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="contrasena" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="apellido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="id_rol" Type="int" Nullable="false" />
+          <Property Name="pais" Type="nvarchar" MaxLength="256" />
+          <Property Name="linkedin" Type="nvarchar" MaxLength="256" />
+          <Property Name="reputacion" Type="int" Nullable="false" />
+          <Property Name="efectividad" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="nivel" Type="int" Nullable="false" />
+          <Property Name="foto" Type="nvarchar(max)" />
+          <Property Name="seguidos" Type="int" Nullable="false" />
+          <Property Name="seguidores" Type="int" Nullable="false" />
+          <Property Name="eliminado" Type="bit" Nullable="false" />
+          <Property Name="fecha_registro" Type="datetime" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UsuariosPreguntas">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_pregunta" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_pregunta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuariosRespuestas">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="id_respuesta" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_respuesta" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DenunciasPreguntas_Denuncias">
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="1" />
+          <End Role="DenunciasPreguntas" Type="Self.DenunciasPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Denuncias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasPreguntas">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasPreguntas_Preguntas">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="DenunciasPreguntas" Type="Self.DenunciasPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasPreguntas">
+              <PropertyRef Name="id_pregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasPreguntas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="DenunciasPreguntas" Type="Self.DenunciasPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasPreguntas">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasRespuestas_Denuncias">
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="1" />
+          <End Role="DenunciasRespuestas" Type="Self.DenunciasRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Denuncias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasRespuestas">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasRespuestas_Respuestas">
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="1" />
+          <End Role="DenunciasRespuestas" Type="Self.DenunciasRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Respuestas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasRespuestas">
+              <PropertyRef Name="id_respuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasRespuestas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="DenunciasRespuestas" Type="Self.DenunciasRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasRespuestas">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedallasUsuarios_Medallas">
+          <End Role="Medallas" Type="Self.Medallas" Multiplicity="1" />
+          <End Role="MedallasUsuarios" Type="Self.MedallasUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medallas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MedallasUsuarios">
+              <PropertyRef Name="id_medalla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedallasUsuarios_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="MedallasUsuarios" Type="Self.MedallasUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MedallasUsuarios">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Preguntas_Categorias">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreguntasTags_Preguntas">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="PreguntasTags" Type="Self.PreguntasTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PreguntasTags">
+              <PropertyRef Name="id_pregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreguntasTags_Tags">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="PreguntasTags" Type="Self.PreguntasTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PreguntasTags">
+              <PropertyRef Name="id_tag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrivilegiosUsuarios_Privilegios">
+          <End Role="Privilegios" Type="Self.Privilegios" Multiplicity="1" />
+          <End Role="PrivilegiosUsuarios" Type="Self.PrivilegiosUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privilegios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PrivilegiosUsuarios">
+              <PropertyRef Name="id_privilegio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrivilegiosUsuarios_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="PrivilegiosUsuarios" Type="Self.PrivilegiosUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PrivilegiosUsuarios">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Respuestas_Preguntas">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="id_pregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Respuestas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespuestasTags_Respuestas">
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="1" />
+          <End Role="RespuestasTags" Type="Self.RespuestasTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Respuestas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RespuestasTags">
+              <PropertyRef Name="id_respuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RespuestasTags_Tags">
+          <End Role="Tags" Type="Self.Tags" Multiplicity="1" />
+          <End Role="RespuestasTags" Type="Self.RespuestasTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RespuestasTags">
+              <PropertyRef Name="id_tag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosPreguntas_Preguntas">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="UsuariosPreguntas" Type="Self.UsuariosPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UsuariosPreguntas">
+              <PropertyRef Name="id_pregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosPreguntas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="UsuariosPreguntas" Type="Self.UsuariosPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UsuariosPreguntas">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosRespuestas_Respuestas">
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="1" />
+          <End Role="UsuariosRespuestas" Type="Self.UsuariosRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Respuestas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UsuariosRespuestas">
+              <PropertyRef Name="id_respuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosRespuestas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="UsuariosRespuestas" Type="Self.UsuariosRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UsuariosRespuestas">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AnswerItDBModelStoreContainer">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Denuncias" EntityType="Self.Denuncias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DenunciasPreguntas" EntityType="Self.DenunciasPreguntas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DenunciasRespuestas" EntityType="Self.DenunciasRespuestas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medallas" EntityType="Self.Medallas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedallasUsuarios" EntityType="Self.MedallasUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreguntasTags" EntityType="Self.PreguntasTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privilegios" EntityType="Self.Privilegios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrivilegiosUsuarios" EntityType="Self.PrivilegiosUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Respuestas" EntityType="Self.Respuestas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RespuestasTags" EntityType="Self.RespuestasTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuariosPreguntas" EntityType="Self.UsuariosPreguntas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuariosRespuestas" EntityType="Self.UsuariosRespuestas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DenunciasPreguntas_Denuncias" Association="Self.FK_DenunciasPreguntas_Denuncias">
+            <End Role="Denuncias" EntitySet="Denuncias" />
+            <End Role="DenunciasPreguntas" EntitySet="DenunciasPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasPreguntas_Preguntas" Association="Self.FK_DenunciasPreguntas_Preguntas">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="DenunciasPreguntas" EntitySet="DenunciasPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasPreguntas_Usuarios" Association="Self.FK_DenunciasPreguntas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="DenunciasPreguntas" EntitySet="DenunciasPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasRespuestas_Denuncias" Association="Self.FK_DenunciasRespuestas_Denuncias">
+            <End Role="Denuncias" EntitySet="Denuncias" />
+            <End Role="DenunciasRespuestas" EntitySet="DenunciasRespuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasRespuestas_Respuestas" Association="Self.FK_DenunciasRespuestas_Respuestas">
+            <End Role="Respuestas" EntitySet="Respuestas" />
+            <End Role="DenunciasRespuestas" EntitySet="DenunciasRespuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasRespuestas_Usuarios" Association="Self.FK_DenunciasRespuestas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="DenunciasRespuestas" EntitySet="DenunciasRespuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedallasUsuarios_Medallas" Association="Self.FK_MedallasUsuarios_Medallas">
+            <End Role="Medallas" EntitySet="Medallas" />
+            <End Role="MedallasUsuarios" EntitySet="MedallasUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedallasUsuarios_Usuarios" Association="Self.FK_MedallasUsuarios_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="MedallasUsuarios" EntitySet="MedallasUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Preguntas_Categorias" Association="Self.FK_Preguntas_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreguntasTags_Preguntas" Association="Self.FK_PreguntasTags_Preguntas">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="PreguntasTags" EntitySet="PreguntasTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreguntasTags_Tags" Association="Self.FK_PreguntasTags_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="PreguntasTags" EntitySet="PreguntasTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrivilegiosUsuarios_Privilegios" Association="Self.FK_PrivilegiosUsuarios_Privilegios">
+            <End Role="Privilegios" EntitySet="Privilegios" />
+            <End Role="PrivilegiosUsuarios" EntitySet="PrivilegiosUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrivilegiosUsuarios_Usuarios" Association="Self.FK_PrivilegiosUsuarios_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="PrivilegiosUsuarios" EntitySet="PrivilegiosUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Respuestas_Preguntas" Association="Self.FK_Respuestas_Preguntas">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Respuestas_Usuarios" Association="Self.FK_Respuestas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespuestasTags_Respuestas" Association="Self.FK_RespuestasTags_Respuestas">
+            <End Role="Respuestas" EntitySet="Respuestas" />
+            <End Role="RespuestasTags" EntitySet="RespuestasTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RespuestasTags_Tags" Association="Self.FK_RespuestasTags_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="RespuestasTags" EntitySet="RespuestasTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosPreguntas_Preguntas" Association="Self.FK_UsuariosPreguntas_Preguntas">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="UsuariosPreguntas" EntitySet="UsuariosPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosPreguntas_Usuarios" Association="Self.FK_UsuariosPreguntas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UsuariosPreguntas" EntitySet="UsuariosPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosRespuestas_Respuestas" Association="Self.FK_UsuariosRespuestas_Respuestas">
+            <End Role="Respuestas" EntitySet="Respuestas" />
+            <End Role="UsuariosRespuestas" EntitySet="UsuariosRespuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosRespuestas_Usuarios" Association="Self.FK_UsuariosRespuestas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UsuariosRespuestas" EntitySet="UsuariosRespuestas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AnswerItDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.FK_Preguntas_Categorias" FromRole="Categorias" ToRole="Preguntas" />
+        </EntityType>
+        <EntityType Name="Denuncias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="motivo" Type="Int32" Nullable="false" />
+          <Property Name="reputacion_descontada" Type="Int32" />
+          <NavigationProperty Name="DenunciasPreguntas" Relationship="Self.FK_DenunciasPreguntas_Denuncias" FromRole="Denuncias" ToRole="DenunciasPreguntas" />
+          <NavigationProperty Name="DenunciasRespuestas" Relationship="Self.FK_DenunciasRespuestas_Denuncias" FromRole="Denuncias" ToRole="DenunciasRespuestas" />
+        </EntityType>
+        <EntityType Name="DenunciasPreguntas">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_pregunta" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_pregunta" Type="Int32" Nullable="false" />
+          <Property Name="autor" Type="Int32" Nullable="false" />
+          <Property Name="motivo" Type="Int32" Nullable="false" />
+          <Property Name="fecha_denuncia" Type="DateTime" Precision="3" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Denuncias" Relationship="Self.FK_DenunciasPreguntas_Denuncias" FromRole="DenunciasPreguntas" ToRole="Denuncias" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.FK_DenunciasPreguntas_Preguntas" FromRole="DenunciasPreguntas" ToRole="Preguntas" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_DenunciasPreguntas_Usuarios" FromRole="DenunciasPreguntas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="DenunciasRespuestas">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_respuesta" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_respuesta" Type="Int32" Nullable="false" />
+          <Property Name="autor" Type="Int32" Nullable="false" />
+          <Property Name="motivo" Type="Int32" Nullable="false" />
+          <Property Name="fecha_denuncia" Type="DateTime" Precision="3" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Denuncias" Relationship="Self.FK_DenunciasRespuestas_Denuncias" FromRole="DenunciasRespuestas" ToRole="Denuncias" />
+          <NavigationProperty Name="Respuestas" Relationship="Self.FK_DenunciasRespuestas_Respuestas" FromRole="DenunciasRespuestas" ToRole="Respuestas" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_DenunciasRespuestas_Usuarios" FromRole="DenunciasRespuestas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Medallas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="material" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.MedallasUsuarios" FromRole="Medallas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="autor" Type="Int32" Nullable="false" />
+          <Property Name="id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="visitas" Type="Int32" />
+          <Property Name="puntaje" Type="Int32" Nullable="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="denunciado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK_Preguntas_Categorias" FromRole="Preguntas" ToRole="Categorias" />
+          <NavigationProperty Name="DenunciasPreguntas" Relationship="Self.FK_DenunciasPreguntas_Preguntas" FromRole="Preguntas" ToRole="DenunciasPreguntas" />
+          <NavigationProperty Name="Respuestas" Relationship="Self.FK_Respuestas_Preguntas" FromRole="Preguntas" ToRole="Respuestas" />
+          <NavigationProperty Name="Tags" Relationship="Self.PreguntasTags" FromRole="Preguntas" ToRole="Tags" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.UsuariosPreguntas" FromRole="Preguntas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Privilegios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="reputacion_necesaria" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="tipo_privilegio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.PrivilegiosUsuarios" FromRole="Privilegios" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Respuestas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="autor" Type="Int32" Nullable="false" />
+          <Property Name="id_pregunta" Type="Int32" Nullable="false" />
+          <Property Name="puntaje" Type="Int32" Nullable="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="denunciado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DenunciasRespuestas" Relationship="Self.FK_DenunciasRespuestas_Respuestas" FromRole="Respuestas" ToRole="DenunciasRespuestas" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.FK_Respuestas_Preguntas" FromRole="Respuestas" ToRole="Preguntas" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Respuestas_Usuarios" FromRole="Respuestas" ToRole="Usuarios" />
+          <NavigationProperty Name="Tags" Relationship="Self.RespuestasTags" FromRole="Respuestas" ToRole="Tags" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.PreguntasTags" FromRole="Tags" ToRole="Preguntas" />
+          <NavigationProperty Name="Respuestas" Relationship="Self.RespuestasTags" FromRole="Tags" ToRole="Respuestas" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="nombre_usuario" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contrasena" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_rol" Type="Int32" Nullable="false" />
+          <Property Name="pais" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="linkedin" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="reputacion" Type="Int32" Nullable="false" />
+          <Property Name="efectividad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="nivel" Type="Int32" Nullable="false" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="seguidos" Type="Int32" Nullable="false" />
+          <Property Name="seguidores" Type="Int32" Nullable="false" />
+          <Property Name="eliminado" Type="Boolean" Nullable="false" />
+          <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DenunciasPreguntas" Relationship="Self.FK_DenunciasPreguntas_Usuarios" FromRole="Usuarios" ToRole="DenunciasPreguntas" />
+          <NavigationProperty Name="DenunciasRespuestas" Relationship="Self.FK_DenunciasRespuestas_Usuarios" FromRole="Usuarios" ToRole="DenunciasRespuestas" />
+          <NavigationProperty Name="Respuestas" Relationship="Self.FK_Respuestas_Usuarios" FromRole="Usuarios" ToRole="Respuestas" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
+          <NavigationProperty Name="Medallas" Relationship="Self.MedallasUsuarios" FromRole="Usuarios" ToRole="Medallas" />
+          <NavigationProperty Name="Privilegios" Relationship="Self.PrivilegiosUsuarios" FromRole="Usuarios" ToRole="Privilegios" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.UsuariosPreguntas" FromRole="Usuarios" ToRole="Preguntas" />
+        </EntityType>
+        <Association Name="FK_Preguntas_Categorias">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasPreguntas_Denuncias">
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="1" />
+          <End Role="DenunciasPreguntas" Type="Self.DenunciasPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Denuncias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasPreguntas">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasRespuestas_Denuncias">
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="1" />
+          <End Role="DenunciasRespuestas" Type="Self.DenunciasRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Denuncias">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasRespuestas">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasPreguntas_Preguntas">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="DenunciasPreguntas" Type="Self.DenunciasPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasPreguntas">
+              <PropertyRef Name="id_pregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasPreguntas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="DenunciasPreguntas" Type="Self.DenunciasPreguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasPreguntas">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasRespuestas_Respuestas">
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="1" />
+          <End Role="DenunciasRespuestas" Type="Self.DenunciasRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Respuestas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasRespuestas">
+              <PropertyRef Name="id_respuesta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DenunciasRespuestas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="DenunciasRespuestas" Type="Self.DenunciasRespuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DenunciasRespuestas">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Respuestas_Preguntas">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preguntas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="id_pregunta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Respuestas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Respuestas">
+              <PropertyRef Name="autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MedallasUsuarios">
+          <End Role="Medallas" Type="Self.Medallas" Multiplicity="*" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+        </Association>
+        <Association Name="PreguntasTags">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+        </Association>
+        <Association Name="PrivilegiosUsuarios">
+          <End Role="Privilegios" Type="Self.Privilegios" Multiplicity="*" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+        </Association>
+        <Association Name="RespuestasTags">
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+        </Association>
+        <Association Name="UsuariosPreguntas">
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+        </Association>
+        <Association Name="UsuariosRespuestas">
+          <End Role="Respuestas" Type="Self.Respuestas" Multiplicity="*" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AnswerItDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+          <EntitySet Name="Denuncias" EntityType="Self.Denuncias" />
+          <EntitySet Name="DenunciasPreguntas" EntityType="Self.DenunciasPreguntas" />
+          <EntitySet Name="DenunciasRespuestas" EntityType="Self.DenunciasRespuestas" />
+          <EntitySet Name="Medallas" EntityType="Self.Medallas" />
+          <EntitySet Name="Preguntas" EntityType="Self.Preguntas" />
+          <EntitySet Name="Privilegios" EntityType="Self.Privilegios" />
+          <EntitySet Name="Respuestas" EntityType="Self.Respuestas" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Tags" EntityType="Self.Tags" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_Preguntas_Categorias" Association="Self.FK_Preguntas_Categorias">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasPreguntas_Denuncias" Association="Self.FK_DenunciasPreguntas_Denuncias">
+            <End Role="Denuncias" EntitySet="Denuncias" />
+            <End Role="DenunciasPreguntas" EntitySet="DenunciasPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasRespuestas_Denuncias" Association="Self.FK_DenunciasRespuestas_Denuncias">
+            <End Role="Denuncias" EntitySet="Denuncias" />
+            <End Role="DenunciasRespuestas" EntitySet="DenunciasRespuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasPreguntas_Preguntas" Association="Self.FK_DenunciasPreguntas_Preguntas">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="DenunciasPreguntas" EntitySet="DenunciasPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasPreguntas_Usuarios" Association="Self.FK_DenunciasPreguntas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="DenunciasPreguntas" EntitySet="DenunciasPreguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasRespuestas_Respuestas" Association="Self.FK_DenunciasRespuestas_Respuestas">
+            <End Role="Respuestas" EntitySet="Respuestas" />
+            <End Role="DenunciasRespuestas" EntitySet="DenunciasRespuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DenunciasRespuestas_Usuarios" Association="Self.FK_DenunciasRespuestas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="DenunciasRespuestas" EntitySet="DenunciasRespuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Respuestas_Preguntas" Association="Self.FK_Respuestas_Preguntas">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Respuestas_Usuarios" Association="Self.FK_Respuestas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Respuestas" EntitySet="Respuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="MedallasUsuarios" Association="Self.MedallasUsuarios">
+            <End Role="Medallas" EntitySet="Medallas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="PreguntasTags" Association="Self.PreguntasTags">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="PrivilegiosUsuarios" Association="Self.PrivilegiosUsuarios">
+            <End Role="Privilegios" EntitySet="Privilegios" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="RespuestasTags" Association="Self.RespuestasTags">
+            <End Role="Respuestas" EntitySet="Respuestas" />
+            <End Role="Tags" EntitySet="Tags" />
+          </AssociationSet>
+          <AssociationSet Name="UsuariosPreguntas" Association="Self.UsuariosPreguntas">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="UsuariosRespuestas" Association="Self.UsuariosRespuestas">
+            <End Role="Respuestas" EntitySet="Respuestas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AnswerItDBModelStoreContainer" CdmEntityContainer="AnswerItDBEntities">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="AnswerItDBModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Denuncias">
+            <EntityTypeMapping TypeName="AnswerItDBModel.Denuncias">
+              <MappingFragment StoreEntitySet="Denuncias">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="reputacion_descontada" ColumnName="reputacion_descontada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DenunciasPreguntas">
+            <EntityTypeMapping TypeName="AnswerItDBModel.DenunciasPreguntas">
+              <MappingFragment StoreEntitySet="DenunciasPreguntas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_pregunta" ColumnName="id_pregunta" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="fecha_denuncia" ColumnName="fecha_denuncia" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DenunciasRespuestas">
+            <EntityTypeMapping TypeName="AnswerItDBModel.DenunciasRespuestas">
+              <MappingFragment StoreEntitySet="DenunciasRespuestas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_respuesta" ColumnName="id_respuesta" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="fecha_denuncia" ColumnName="fecha_denuncia" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medallas">
+            <EntityTypeMapping TypeName="AnswerItDBModel.Medallas">
+              <MappingFragment StoreEntitySet="Medallas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="material" ColumnName="material" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preguntas">
+            <EntityTypeMapping TypeName="AnswerItDBModel.Preguntas">
+              <MappingFragment StoreEntitySet="Preguntas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="visitas" ColumnName="visitas" />
+                <ScalarProperty Name="puntaje" ColumnName="puntaje" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="denunciado" ColumnName="denunciado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privilegios">
+            <EntityTypeMapping TypeName="AnswerItDBModel.Privilegios">
+              <MappingFragment StoreEntitySet="Privilegios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="reputacion_necesaria" ColumnName="reputacion_necesaria" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="tipo_privilegio" ColumnName="tipo_privilegio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Respuestas">
+            <EntityTypeMapping TypeName="AnswerItDBModel.Respuestas">
+              <MappingFragment StoreEntitySet="Respuestas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+                <ScalarProperty Name="id_pregunta" ColumnName="id_pregunta" />
+                <ScalarProperty Name="puntaje" ColumnName="puntaje" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="denunciado" ColumnName="denunciado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AnswerItDBModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="AnswerItDBModel.Tags">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="AnswerItDBModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+                <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+                <ScalarProperty Name="reputacion" ColumnName="reputacion" />
+                <ScalarProperty Name="efectividad" ColumnName="efectividad" />
+                <ScalarProperty Name="nivel" ColumnName="nivel" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="seguidos" ColumnName="seguidos" />
+                <ScalarProperty Name="seguidores" ColumnName="seguidores" />
+                <ScalarProperty Name="eliminado" ColumnName="eliminado" />
+                <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="MedallasUsuarios" TypeName="AnswerItDBModel.MedallasUsuarios" StoreEntitySet="MedallasUsuarios">
+            <EndProperty Name="Medallas">
+              <ScalarProperty Name="id" ColumnName="id_medalla" />
+            </EndProperty>
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="id" ColumnName="id_usuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PreguntasTags" TypeName="AnswerItDBModel.PreguntasTags" StoreEntitySet="PreguntasTags">
+            <EndProperty Name="Preguntas">
+              <ScalarProperty Name="id" ColumnName="id_pregunta" />
+            </EndProperty>
+            <EndProperty Name="Tags">
+              <ScalarProperty Name="id" ColumnName="id_tag" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PrivilegiosUsuarios" TypeName="AnswerItDBModel.PrivilegiosUsuarios" StoreEntitySet="PrivilegiosUsuarios">
+            <EndProperty Name="Privilegios">
+              <ScalarProperty Name="id" ColumnName="id_privilegio" />
+            </EndProperty>
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="id" ColumnName="id_usuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RespuestasTags" TypeName="AnswerItDBModel.RespuestasTags" StoreEntitySet="RespuestasTags">
+            <EndProperty Name="Respuestas">
+              <ScalarProperty Name="id" ColumnName="id_respuesta" />
+            </EndProperty>
+            <EndProperty Name="Tags">
+              <ScalarProperty Name="id" ColumnName="id_tag" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UsuariosPreguntas" TypeName="AnswerItDBModel.UsuariosPreguntas" StoreEntitySet="UsuariosPreguntas">
+            <EndProperty Name="Preguntas">
+              <ScalarProperty Name="id" ColumnName="id_pregunta" />
+            </EndProperty>
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="id" ColumnName="id_usuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UsuariosRespuestas" TypeName="AnswerItDBModel.UsuariosRespuestas" StoreEntitySet="UsuariosRespuestas">
+            <EndProperty Name="Respuestas">
+              <ScalarProperty Name="id" ColumnName="id_respuesta" />
+            </EndProperty>
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="id" ColumnName="id_usuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

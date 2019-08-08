@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8c7836d842ce4f759cd0ecb3e68fedd1" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="AnswerItDBModel.Categorias" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.Denuncias" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.DenunciasPreguntas" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.DenunciasRespuestas" Width="1.5" PointX="10.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.Medallas" Width="1.5" PointX="11.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.Preguntas" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.Privilegios" Width="1.5" PointX="11.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.Respuestas" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.Roles" Width="1.5" PointX="11.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.Tags" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AnswerItDBModel.Usuarios" Width="1.5" PointX="13.5" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="AnswerItDBModel.FK_Preguntas_Categorias" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.FK_DenunciasPreguntas_Denuncias" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.FK_DenunciasRespuestas_Denuncias" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.FK_DenunciasPreguntas_Preguntas" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.FK_DenunciasPreguntas_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.FK_DenunciasRespuestas_Respuestas" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.FK_DenunciasRespuestas_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.FK_Respuestas_Preguntas" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.FK_Respuestas_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.FK_Usuarios_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.MedallasUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.PreguntasTags" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.PrivilegiosUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.RespuestasTags" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.UsuariosPreguntas" ManuallyRouted="false" />
+        <AssociationConnector Association="AnswerItDBModel.UsuariosRespuestas" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
