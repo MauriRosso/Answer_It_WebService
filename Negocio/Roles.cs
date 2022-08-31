@@ -10,7 +10,5 @@ namespace Negocio
     {
         public int id { get; set; }
         public string nombre { get; set; }
-
-        public List<Usuarios> ListaUsuarios = new List<Usuarios>();
     }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fbd21a5570b04a06b834edfffc47c3d8" Name="Diagram1">
+        <EntityTypeShape EntityType="RecommendItModel.Denuncias" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.DenunciasRecomendaciones" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.DenunciasSolicitudRecomendaciones" Width="1.5" PointX="7.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.DenunciasSolicitudValoraciones" Width="1.5" PointX="8.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.DenunciasValoraciones" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.Productos" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.Recomendaciones" Width="1.5" PointX="10.5" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.Roles" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.SolicitudRecomendaciones" Width="1.5" PointX="5.25" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.SolicitudValoraciones" Width="1.5" PointX="5.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.Usuarios" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecommendItModel.Valoraciones" Width="1.5" PointX="7.5" PointY="18.25" IsExpanded="true" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasRecomendaciones_Denuncias" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasSolicitudRecomendaciones_Denuncias" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasSolicitudValoraciones_Denuncias" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasValoraciones_Denuncias" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasRecomendaciones_Recomendaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasRecomendaciones_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasSolicitudRecomendaciones_SolicitudRecomendaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasSolicitudRecomendaciones_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasSolicitudValoraciones_SolicitudValoraciones" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasSolicitudValoraciones_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasValoraciones_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_DenunciasValoraciones_Valoraciones" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_SolicitudValoraciones_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_Recomendaciones_SolicitudRecomendaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_Recomendaciones_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_Usuarios_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_SolicitudRecomendaciones_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_SolicitudValoraciones_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_Valoraciones_SolicitudValoraciones" ManuallyRouted="false" />
+        <AssociationConnector Association="RecommendItModel.FK_Valoraciones_Usuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

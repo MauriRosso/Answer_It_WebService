@@ -17,12 +17,14 @@ namespace Datos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuarios()
         {
-            this.DenunciasPreguntas = new HashSet<DenunciasPreguntas>();
-            this.DenunciasRespuestas = new HashSet<DenunciasRespuestas>();
-            this.Respuestas = new HashSet<Respuestas>();
-            this.Medallas = new HashSet<Medallas>();
-            this.Privilegios = new HashSet<Privilegios>();
-            this.Preguntas = new HashSet<Preguntas>();
+            this.DenunciasRecomendaciones = new HashSet<DenunciasRecomendaciones>();
+            this.DenunciasSolicitudRecomendaciones = new HashSet<DenunciasSolicitudRecomendaciones>();
+            this.DenunciasSolicitudValoraciones = new HashSet<DenunciasSolicitudValoraciones>();
+            this.DenunciasValoraciones = new HashSet<DenunciasValoraciones>();
+            this.Recomendaciones = new HashSet<Recomendaciones>();
+            this.SolicitudRecomendaciones = new HashSet<SolicitudRecomendaciones>();
+            this.SolicitudValoraciones = new HashSet<SolicitudValoraciones>();
+            this.Valoraciones = new HashSet<Valoraciones>();
         }
     
         public int id { get; set; }
@@ -33,29 +35,32 @@ namespace Datos
         public string nombre { get; set; }
         public int id_rol { get; set; }
         public string pais { get; set; }
-        public string linkedin { get; set; }
+        public string localidad { get; set; }
         public int reputacion { get; set; }
         public decimal efectividad { get; set; }
         public int nivel { get; set; }
         public string foto { get; set; }
-        public int seguidos { get; set; }
-        public int seguidores { get; set; }
         public bool eliminado { get; set; }
         public Nullable<System.DateTime> fecha_registro { get; set; }
         public string descripcion { get; set; }
+        public Nullable<bool> es_primera_vez { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DenunciasPreguntas> DenunciasPreguntas { get; set; }
+        public virtual ICollection<DenunciasRecomendaciones> DenunciasRecomendaciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DenunciasRespuestas> DenunciasRespuestas { get; set; }
+        public virtual ICollection<DenunciasSolicitudRecomendaciones> DenunciasSolicitudRecomendaciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Respuestas> Respuestas { get; set; }
+        public virtual ICollection<DenunciasSolicitudValoraciones> DenunciasSolicitudValoraciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DenunciasValoraciones> DenunciasValoraciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Recomendaciones> Recomendaciones { get; set; }
         public virtual Roles Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Medallas> Medallas { get; set; }
+        public virtual ICollection<SolicitudRecomendaciones> SolicitudRecomendaciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Privilegios> Privilegios { get; set; }
+        public virtual ICollection<SolicitudValoraciones> SolicitudValoraciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Preguntas> Preguntas { get; set; }
+        public virtual ICollection<Valoraciones> Valoraciones { get; set; }
     }
 }

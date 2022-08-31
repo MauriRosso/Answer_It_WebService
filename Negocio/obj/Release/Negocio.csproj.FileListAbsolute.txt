@@ -1,0 +1,6 @@
+C:\Answer_It_ServicioWeb\Negocio\bin\Release\Negocio.dll
+C:\Answer_It_ServicioWeb\Negocio\bin\Release\Negocio.pdb
+C:\Answer_It_ServicioWeb\Negocio\obj\Release\Negocio.csprojAssemblyReference.cache
+C:\Answer_It_ServicioWeb\Negocio\obj\Release\Negocio.csproj.CoreCompileInputs.cache
+C:\Answer_It_ServicioWeb\Negocio\obj\Release\Negocio.dll
+C:\Answer_It_ServicioWeb\Negocio\obj\Release\Negocio.pdb

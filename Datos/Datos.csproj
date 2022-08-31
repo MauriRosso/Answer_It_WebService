@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0DBDDED6-2743-4ED8-B39F-4C332EFD9129}</ProjectGuid>
+    <ProjectGuid>{C79C54B3-8216-428C-BDAB-4E4BB0A3C209}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Datos</RootNamespace>
@@ -50,83 +50,84 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categorias.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
-    </Compile>
     <Compile Include="Denuncias.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DenunciasPreguntas.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
+    <Compile Include="DenunciasRecomendaciones.cs">
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DenunciasRespuestas.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
+    <Compile Include="DenunciasSolicitudRecomendaciones.cs">
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Medallas.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
+    <Compile Include="DenunciasSolicitudValoraciones.cs">
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModeloAnswerIt.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloAnswerIt.Context.tt</DependentUpon>
+    <Compile Include="DenunciasValoraciones.cs">
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModeloAnswerIt.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModeloAnswerIt.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloAnswerIt.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Preguntas.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Privilegios.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
+    <Compile Include="Productos.cs">
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Respuestas.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
+    <Compile Include="Recomendaciones.cs">
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecommendItModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecommendItModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecommendItModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecommendItModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecommendItModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Roles.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Tags.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
+    <Compile Include="SolicitudRecomendaciones.cs">
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SolicitudValoraciones.cs">
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.cs">
-      <DependentUpon>ModeloAnswerIt.tt</DependentUpon>
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="ModeloAnswerIt.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloAnswerIt.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Compile Include="Valoraciones.cs">
+      <DependentUpon>RecommendItModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="ModeloAnswerIt.edmx.diagram">
-      <DependentUpon>ModeloAnswerIt.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ModeloAnswerIt.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModeloAnswerIt.Context.cs</LastGenOutput>
-      <DependentUpon>ModeloAnswerIt.edmx</DependentUpon>
-    </Content>
-    <Content Include="ModeloAnswerIt.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloAnswerIt.edmx</DependentUpon>
-      <LastGenOutput>ModeloAnswerIt.cs</LastGenOutput>
-    </Content>
+    <EntityDeploy Include="RecommendItModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RecommendItModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="RecommendItModel.edmx.diagram">
+      <DependentUpon>RecommendItModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RecommendItModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecommendItModel.edmx</DependentUpon>
+      <LastGenOutput>RecommendItModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="RecommendItModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RecommendItModel.edmx</DependentUpon>
+      <LastGenOutput>RecommendItModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

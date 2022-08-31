@@ -13,38 +13,21 @@ namespace Answer_It_WebService.Controllers
     public class UsuariosApiController : ApiController
     {
         // GET: api/UsuariosApi
+        [HttpGet]
         public IQueryable<Usuarios> Get()
         {
-            AnswerItDBEntities db = new AnswerItDBEntities();
+            RecommendItEntities db = new RecommendItEntities();
             db.Configuration.ProxyCreationEnabled = false;
             return db.Usuarios;
 
         }
 
-        //public Usuarios GetUsuariosPorNombre(string nombre_usuario, string contrasena)
-        //{
-        //    AnswerItDBEntities db = new AnswerItDBEntities();
-        //    db.Configuration.ProxyCreationEnabled = false;
-        //    IQueryable<Usuarios> usuarios = Get();
-        //    foreach (var item in usuarios)
-        //    {
-        //        if (nombre_usuario == item.nombre_usuario)
-        //        {
-        //            if (contrasena == item.contrasena)
-        //            {
-        //                return item;
-        //            }
-        //        }
-        //    }
-        //    return null;
-
-        //}
-
         // GET: api/UsuariosApi/2
+        [HttpGet]
         [ResponseType(typeof(Usuarios))]
-        public async Task<IHttpActionResult> GetUsuariosPorId(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
-            AnswerItDBEntities db = new AnswerItDBEntities();
+            RecommendItEntities db = new RecommendItEntities();
             db.Configuration.ProxyCreationEnabled = false;
             Usuarios usuario = await db.Usuarios.FindAsync(id);
             if (usuario == null)
@@ -56,34 +39,51 @@ namespace Answer_It_WebService.Controllers
         }
 
         // POST: api/UsuariosApi
-        public HttpResponseMessage Post([FromBody]Usuarios usuario)
+        [HttpPost]
+        public bool Post(Usuarios usuario) //Agrego un registro
         {
-            AnswerItDBEntities db = new AnswerItDBEntities();
-            try
-            {
-                db.Configuration.ProxyCreationEnabled = false;
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
-
-                var message = Request.CreateResponse(HttpStatusCode.Created, usuario);
-                message.Headers.Location = new Uri(Request.RequestUri + usuario.id.ToString());
-                return message;
-
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
-            }
+            RecommendItEntities db = new RecommendItEntities();
+            db.Configuration.ProxyCreationEnabled = false;
+            db.Usuarios.Add(usuario);
+            return db.SaveChanges() > 0;
         }
 
-        // PUT: api/UsuariosApi/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public bool Put(Usuarios usuario) //Modifico un registro
         {
+            RecommendItEntities db = new RecommendItEntities();
+
+            db.Configuration.ProxyCreationEnabled = false;
+            Usuarios usu_antiguo = db.Usuarios.FirstOrDefault(x => x.id == usuario.id);
+
+            usu_antiguo.id = usuario.id;
+            usu_antiguo.email = usuario.email;
+            usu_antiguo.nombre_usuario = usuario.nombre_usuario;
+            usu_antiguo.apellido = usuario.apellido;
+            usu_antiguo.nombre = usuario.nombre;
+            usu_antiguo.id_rol = usuario.id_rol;
+            usu_antiguo.pais = usuario.pais;
+            usu_antiguo.localidad = usuario.localidad;
+            usu_antiguo.reputacion = usuario.reputacion;
+            usu_antiguo.efectividad = usuario.efectividad;
+            usu_antiguo.nivel = usuario.nivel;
+            usu_antiguo.foto = usuario.foto;
+            usu_antiguo.eliminado = usuario.eliminado;
+            usu_antiguo.fecha_registro = usuario.fecha_registro;
+            usu_antiguo.descripcion = usuario.descripcion;
+            usu_antiguo.es_primera_vez = usuario.es_primera_vez;
+            return db.SaveChanges() > 0;
         }
 
-        // DELETE: api/UsuariosApi/5
-        public void Delete(int id)
+        [HttpDelete]
+        public bool Delete(int id) //Elimino un registro
         {
+            RecommendItEntities db = new RecommendItEntities();
+
+            db.Configuration.ProxyCreationEnabled = false;
+            Usuarios usu_encontrado = db.Usuarios.FirstOrDefault(x => x.id == id);
+            db.Usuarios.Remove(usu_encontrado);
+            return db.SaveChanges() > 0; 
         }
     }
 }

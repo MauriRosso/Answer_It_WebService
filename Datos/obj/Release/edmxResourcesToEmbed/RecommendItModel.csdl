@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RecommendItModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Denuncias">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="motivo" Type="Int32" Nullable="false" />
+    <Property Name="reputacion_descontada" Type="Int32" />
+    <NavigationProperty Name="DenunciasRecomendaciones" Relationship="Self.FK_DenunciasRecomendaciones_Denuncias" FromRole="Denuncias" ToRole="DenunciasRecomendaciones" />
+    <NavigationProperty Name="DenunciasSolicitudRecomendaciones" Relationship="Self.FK_DenunciasSolicitudRecomendaciones_Denuncias" FromRole="Denuncias" ToRole="DenunciasSolicitudRecomendaciones" />
+    <NavigationProperty Name="DenunciasSolicitudValoraciones" Relationship="Self.FK_DenunciasSolicitudValoraciones_Denuncias" FromRole="Denuncias" ToRole="DenunciasSolicitudValoraciones" />
+    <NavigationProperty Name="DenunciasValoraciones" Relationship="Self.FK_DenunciasValoraciones_Denuncias" FromRole="Denuncias" ToRole="DenunciasValoraciones" />
+  </EntityType>
+  <EntityType Name="DenunciasRecomendaciones">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="id_recomendacion" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_recomendacion" Type="Int32" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="motivo" Type="Int32" Nullable="false" />
+    <Property Name="fecha_denuncia" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Denuncias" Relationship="Self.FK_DenunciasRecomendaciones_Denuncias" FromRole="DenunciasRecomendaciones" ToRole="Denuncias" />
+    <NavigationProperty Name="Recomendaciones" Relationship="Self.FK_DenunciasRecomendaciones_Recomendaciones" FromRole="DenunciasRecomendaciones" ToRole="Recomendaciones" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_DenunciasRecomendaciones_Usuarios" FromRole="DenunciasRecomendaciones" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="DenunciasSolicitudRecomendaciones">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="id_solicitud_recomendacion" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_solicitud_recomendacion" Type="Int32" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="motivo" Type="Int32" Nullable="false" />
+    <Property Name="fecha_denuncia" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Denuncias" Relationship="Self.FK_DenunciasSolicitudRecomendaciones_Denuncias" FromRole="DenunciasSolicitudRecomendaciones" ToRole="Denuncias" />
+    <NavigationProperty Name="SolicitudRecomendaciones" Relationship="Self.FK_DenunciasSolicitudRecomendaciones_SolicitudRecomendaciones" FromRole="DenunciasSolicitudRecomendaciones" ToRole="SolicitudRecomendaciones" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_DenunciasSolicitudRecomendaciones_Usuarios" FromRole="DenunciasSolicitudRecomendaciones" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="DenunciasSolicitudValoraciones">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="id_solicitud_valoracion" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_solicitud_valoracion" Type="Int32" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="motivo" Type="Int32" Nullable="false" />
+    <Property Name="fecha_denuncia" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Denuncias" Relationship="Self.FK_DenunciasSolicitudValoraciones_Denuncias" FromRole="DenunciasSolicitudValoraciones" ToRole="Denuncias" />
+    <NavigationProperty Name="SolicitudValoraciones" Relationship="Self.FK_DenunciasSolicitudValoraciones_SolicitudValoraciones" FromRole="DenunciasSolicitudValoraciones" ToRole="SolicitudValoraciones" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_DenunciasSolicitudValoraciones_Usuarios" FromRole="DenunciasSolicitudValoraciones" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="DenunciasValoraciones">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="id_valoracion" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_valoracion" Type="Int32" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="motivo" Type="Int32" Nullable="false" />
+    <Property Name="fecha_denuncia" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Denuncias" Relationship="Self.FK_DenunciasValoraciones_Denuncias" FromRole="DenunciasValoraciones" ToRole="Denuncias" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_DenunciasValoraciones_Usuarios" FromRole="DenunciasValoraciones" ToRole="Usuarios" />
+    <NavigationProperty Name="Valoraciones" Relationship="Self.FK_DenunciasValoraciones_Valoraciones" FromRole="DenunciasValoraciones" ToRole="Valoraciones" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="codigo_barras" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SolicitudValoraciones" Relationship="Self.FK_SolicitudValoraciones_Productos" FromRole="Productos" ToRole="SolicitudValoraciones" />
+  </EntityType>
+  <EntityType Name="Recomendaciones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="id_solicitud_recomendacion" Type="Int32" Nullable="false" />
+    <Property Name="me_gusta" Type="Int32" Nullable="false" />
+    <Property Name="eliminado" Type="Boolean" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DenunciasRecomendaciones" Relationship="Self.FK_DenunciasRecomendaciones_Recomendaciones" FromRole="Recomendaciones" ToRole="DenunciasRecomendaciones" />
+    <NavigationProperty Name="SolicitudRecomendaciones" Relationship="Self.FK_Recomendaciones_SolicitudRecomendaciones" FromRole="Recomendaciones" ToRole="SolicitudRecomendaciones" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Recomendaciones_Usuarios" FromRole="Recomendaciones" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="SolicitudRecomendaciones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="leyenda" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="visitas" Type="Int32" />
+    <Property Name="eliminado" Type="Boolean" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="reputacion_otorgada" Type="Int32" Nullable="false" />
+    <Property Name="sin_skill" Type="Boolean" Nullable="false" />
+    <Property Name="skill_prisa" Type="Boolean" Nullable="false" />
+    <Property Name="skill_destacado" Type="Boolean" Nullable="false" />
+    <Property Name="nivel_requerido" Type="Int32" />
+    <NavigationProperty Name="DenunciasSolicitudRecomendaciones" Relationship="Self.FK_DenunciasSolicitudRecomendaciones_SolicitudRecomendaciones" FromRole="SolicitudRecomendaciones" ToRole="DenunciasSolicitudRecomendaciones" />
+    <NavigationProperty Name="Recomendaciones" Relationship="Self.FK_Recomendaciones_SolicitudRecomendaciones" FromRole="SolicitudRecomendaciones" ToRole="Recomendaciones" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_SolicitudRecomendaciones_Usuarios" FromRole="SolicitudRecomendaciones" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="SolicitudValoraciones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="leyenda" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="visitas" Type="Int32" />
+    <Property Name="eliminado" Type="Boolean" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cant_recomendaciones" Type="Int32" Nullable="false" />
+    <Property Name="reputacion_otorgada" Type="Int32" Nullable="false" />
+    <Property Name="sin_skill" Type="Boolean" Nullable="false" />
+    <Property Name="skill_prisa" Type="Boolean" Nullable="false" />
+    <Property Name="skill_destacado" Type="Boolean" Nullable="false" />
+    <Property Name="nivel_requerido" Type="Int32" />
+    <Property Name="id_producto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DenunciasSolicitudValoraciones" Relationship="Self.FK_DenunciasSolicitudValoraciones_SolicitudValoraciones" FromRole="SolicitudValoraciones" ToRole="DenunciasSolicitudValoraciones" />
+    <NavigationProperty Name="Productos" Relationship="Self.FK_SolicitudValoraciones_Productos" FromRole="SolicitudValoraciones" ToRole="Productos" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_SolicitudValoraciones_Usuarios" FromRole="SolicitudValoraciones" ToRole="Usuarios" />
+    <NavigationProperty Name="Valoraciones" Relationship="Self.FK_Valoraciones_SolicitudValoraciones" FromRole="SolicitudValoraciones" ToRole="Valoraciones" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="nombre_usuario" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="contrasena" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_rol" Type="Int32" Nullable="false" />
+    <Property Name="pais" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="localidad" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="reputacion" Type="Int32" Nullable="false" />
+    <Property Name="efectividad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="nivel" Type="Int32" Nullable="false" />
+    <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="eliminado" Type="Boolean" Nullable="false" />
+    <Property Name="fecha_registro" Type="DateTime" Precision="3" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="es_primera_vez" Type="Boolean" />
+    <NavigationProperty Name="DenunciasRecomendaciones" Relationship="Self.FK_DenunciasRecomendaciones_Usuarios" FromRole="Usuarios" ToRole="DenunciasRecomendaciones" />
+    <NavigationProperty Name="DenunciasSolicitudRecomendaciones" Relationship="Self.FK_DenunciasSolicitudRecomendaciones_Usuarios" FromRole="Usuarios" ToRole="DenunciasSolicitudRecomendaciones" />
+    <NavigationProperty Name="DenunciasSolicitudValoraciones" Relationship="Self.FK_DenunciasSolicitudValoraciones_Usuarios" FromRole="Usuarios" ToRole="DenunciasSolicitudValoraciones" />
+    <NavigationProperty Name="DenunciasValoraciones" Relationship="Self.FK_DenunciasValoraciones_Usuarios" FromRole="Usuarios" ToRole="DenunciasValoraciones" />
+    <NavigationProperty Name="Recomendaciones" Relationship="Self.FK_Recomendaciones_Usuarios" FromRole="Usuarios" ToRole="Recomendaciones" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
+    <NavigationProperty Name="SolicitudRecomendaciones" Relationship="Self.FK_SolicitudRecomendaciones_Usuarios" FromRole="Usuarios" ToRole="SolicitudRecomendaciones" />
+    <NavigationProperty Name="SolicitudValoraciones" Relationship="Self.FK_SolicitudValoraciones_Usuarios" FromRole="Usuarios" ToRole="SolicitudValoraciones" />
+    <NavigationProperty Name="Valoraciones" Relationship="Self.FK_Valoraciones_Usuarios" FromRole="Usuarios" ToRole="Valoraciones" />
+  </EntityType>
+  <EntityType Name="Valoraciones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="id_solicitud_valoracion" Type="Int32" Nullable="false" />
+    <Property Name="puntaje" Type="Int32" Nullable="false" />
+    <Property Name="eliminado" Type="Boolean" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="me_gusta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DenunciasValoraciones" Relationship="Self.FK_DenunciasValoraciones_Valoraciones" FromRole="Valoraciones" ToRole="DenunciasValoraciones" />
+    <NavigationProperty Name="SolicitudValoraciones" Relationship="Self.FK_Valoraciones_SolicitudValoraciones" FromRole="Valoraciones" ToRole="SolicitudValoraciones" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Valoraciones_Usuarios" FromRole="Valoraciones" ToRole="Usuarios" />
+  </EntityType>
+  <Association Name="FK_DenunciasRecomendaciones_Denuncias">
+    <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="1" />
+    <End Role="DenunciasRecomendaciones" Type="Self.DenunciasRecomendaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Denuncias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasRecomendaciones">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasSolicitudRecomendaciones_Denuncias">
+    <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="1" />
+    <End Role="DenunciasSolicitudRecomendaciones" Type="Self.DenunciasSolicitudRecomendaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Denuncias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasSolicitudRecomendaciones">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasSolicitudValoraciones_Denuncias">
+    <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="1" />
+    <End Role="DenunciasSolicitudValoraciones" Type="Self.DenunciasSolicitudValoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Denuncias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasSolicitudValoraciones">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasValoraciones_Denuncias">
+    <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="1" />
+    <End Role="DenunciasValoraciones" Type="Self.DenunciasValoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Denuncias">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasValoraciones">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasRecomendaciones_Recomendaciones">
+    <End Role="Recomendaciones" Type="Self.Recomendaciones" Multiplicity="1" />
+    <End Role="DenunciasRecomendaciones" Type="Self.DenunciasRecomendaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recomendaciones">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasRecomendaciones">
+        <PropertyRef Name="id_recomendacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasRecomendaciones_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="DenunciasRecomendaciones" Type="Self.DenunciasRecomendaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasRecomendaciones">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasSolicitudRecomendaciones_SolicitudRecomendaciones">
+    <End Role="SolicitudRecomendaciones" Type="Self.SolicitudRecomendaciones" Multiplicity="1" />
+    <End Role="DenunciasSolicitudRecomendaciones" Type="Self.DenunciasSolicitudRecomendaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudRecomendaciones">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasSolicitudRecomendaciones">
+        <PropertyRef Name="id_solicitud_recomendacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasSolicitudRecomendaciones_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="DenunciasSolicitudRecomendaciones" Type="Self.DenunciasSolicitudRecomendaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasSolicitudRecomendaciones">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasSolicitudValoraciones_SolicitudValoraciones">
+    <End Role="SolicitudValoraciones" Type="Self.SolicitudValoraciones" Multiplicity="1" />
+    <End Role="DenunciasSolicitudValoraciones" Type="Self.DenunciasSolicitudValoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudValoraciones">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasSolicitudValoraciones">
+        <PropertyRef Name="id_solicitud_valoracion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasSolicitudValoraciones_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="DenunciasSolicitudValoraciones" Type="Self.DenunciasSolicitudValoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasSolicitudValoraciones">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasValoraciones_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="DenunciasValoraciones" Type="Self.DenunciasValoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasValoraciones">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DenunciasValoraciones_Valoraciones">
+    <End Role="Valoraciones" Type="Self.Valoraciones" Multiplicity="1" />
+    <End Role="DenunciasValoraciones" Type="Self.DenunciasValoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Valoraciones">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DenunciasValoraciones">
+        <PropertyRef Name="id_valoracion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SolicitudValoraciones_Productos">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+    <End Role="SolicitudValoraciones" Type="Self.SolicitudValoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SolicitudValoraciones">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recomendaciones_SolicitudRecomendaciones">
+    <End Role="SolicitudRecomendaciones" Type="Self.SolicitudRecomendaciones" Multiplicity="1" />
+    <End Role="Recomendaciones" Type="Self.Recomendaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudRecomendaciones">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Recomendaciones">
+        <PropertyRef Name="id_solicitud_recomendacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Recomendaciones_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Recomendaciones" Type="Self.Recomendaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Recomendaciones">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="id_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SolicitudRecomendaciones_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="SolicitudRecomendaciones" Type="Self.SolicitudRecomendaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SolicitudRecomendaciones">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SolicitudValoraciones_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="SolicitudValoraciones" Type="Self.SolicitudValoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SolicitudValoraciones">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Valoraciones_SolicitudValoraciones">
+    <End Role="SolicitudValoraciones" Type="Self.SolicitudValoraciones" Multiplicity="1" />
+    <End Role="Valoraciones" Type="Self.Valoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SolicitudValoraciones">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Valoraciones">
+        <PropertyRef Name="id_solicitud_valoracion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Valoraciones_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Valoraciones" Type="Self.Valoraciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Valoraciones">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RecommendItEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Denuncias" EntityType="Self.Denuncias" />
+    <EntitySet Name="DenunciasRecomendaciones" EntityType="Self.DenunciasRecomendaciones" />
+    <EntitySet Name="DenunciasSolicitudRecomendaciones" EntityType="Self.DenunciasSolicitudRecomendaciones" />
+    <EntitySet Name="DenunciasSolicitudValoraciones" EntityType="Self.DenunciasSolicitudValoraciones" />
+    <EntitySet Name="DenunciasValoraciones" EntityType="Self.DenunciasValoraciones" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" />
+    <EntitySet Name="Recomendaciones" EntityType="Self.Recomendaciones" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="SolicitudRecomendaciones" EntityType="Self.SolicitudRecomendaciones" />
+    <EntitySet Name="SolicitudValoraciones" EntityType="Self.SolicitudValoraciones" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <EntitySet Name="Valoraciones" EntityType="Self.Valoraciones" />
+    <AssociationSet Name="FK_DenunciasRecomendaciones_Denuncias" Association="Self.FK_DenunciasRecomendaciones_Denuncias">
+      <End Role="Denuncias" EntitySet="Denuncias" />
+      <End Role="DenunciasRecomendaciones" EntitySet="DenunciasRecomendaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasSolicitudRecomendaciones_Denuncias" Association="Self.FK_DenunciasSolicitudRecomendaciones_Denuncias">
+      <End Role="Denuncias" EntitySet="Denuncias" />
+      <End Role="DenunciasSolicitudRecomendaciones" EntitySet="DenunciasSolicitudRecomendaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasSolicitudValoraciones_Denuncias" Association="Self.FK_DenunciasSolicitudValoraciones_Denuncias">
+      <End Role="Denuncias" EntitySet="Denuncias" />
+      <End Role="DenunciasSolicitudValoraciones" EntitySet="DenunciasSolicitudValoraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasValoraciones_Denuncias" Association="Self.FK_DenunciasValoraciones_Denuncias">
+      <End Role="Denuncias" EntitySet="Denuncias" />
+      <End Role="DenunciasValoraciones" EntitySet="DenunciasValoraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasRecomendaciones_Recomendaciones" Association="Self.FK_DenunciasRecomendaciones_Recomendaciones">
+      <End Role="Recomendaciones" EntitySet="Recomendaciones" />
+      <End Role="DenunciasRecomendaciones" EntitySet="DenunciasRecomendaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasRecomendaciones_Usuarios" Association="Self.FK_DenunciasRecomendaciones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="DenunciasRecomendaciones" EntitySet="DenunciasRecomendaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasSolicitudRecomendaciones_SolicitudRecomendaciones" Association="Self.FK_DenunciasSolicitudRecomendaciones_SolicitudRecomendaciones">
+      <End Role="SolicitudRecomendaciones" EntitySet="SolicitudRecomendaciones" />
+      <End Role="DenunciasSolicitudRecomendaciones" EntitySet="DenunciasSolicitudRecomendaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasSolicitudRecomendaciones_Usuarios" Association="Self.FK_DenunciasSolicitudRecomendaciones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="DenunciasSolicitudRecomendaciones" EntitySet="DenunciasSolicitudRecomendaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasSolicitudValoraciones_SolicitudValoraciones" Association="Self.FK_DenunciasSolicitudValoraciones_SolicitudValoraciones">
+      <End Role="SolicitudValoraciones" EntitySet="SolicitudValoraciones" />
+      <End Role="DenunciasSolicitudValoraciones" EntitySet="DenunciasSolicitudValoraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasSolicitudValoraciones_Usuarios" Association="Self.FK_DenunciasSolicitudValoraciones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="DenunciasSolicitudValoraciones" EntitySet="DenunciasSolicitudValoraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasValoraciones_Usuarios" Association="Self.FK_DenunciasValoraciones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="DenunciasValoraciones" EntitySet="DenunciasValoraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DenunciasValoraciones_Valoraciones" Association="Self.FK_DenunciasValoraciones_Valoraciones">
+      <End Role="Valoraciones" EntitySet="Valoraciones" />
+      <End Role="DenunciasValoraciones" EntitySet="DenunciasValoraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SolicitudValoraciones_Productos" Association="Self.FK_SolicitudValoraciones_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="SolicitudValoraciones" EntitySet="SolicitudValoraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recomendaciones_SolicitudRecomendaciones" Association="Self.FK_Recomendaciones_SolicitudRecomendaciones">
+      <End Role="SolicitudRecomendaciones" EntitySet="SolicitudRecomendaciones" />
+      <End Role="Recomendaciones" EntitySet="Recomendaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Recomendaciones_Usuarios" Association="Self.FK_Recomendaciones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Recomendaciones" EntitySet="Recomendaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SolicitudRecomendaciones_Usuarios" Association="Self.FK_SolicitudRecomendaciones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="SolicitudRecomendaciones" EntitySet="SolicitudRecomendaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SolicitudValoraciones_Usuarios" Association="Self.FK_SolicitudValoraciones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="SolicitudValoraciones" EntitySet="SolicitudValoraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valoraciones_SolicitudValoraciones" Association="Self.FK_Valoraciones_SolicitudValoraciones">
+      <End Role="SolicitudValoraciones" EntitySet="SolicitudValoraciones" />
+      <End Role="Valoraciones" EntitySet="Valoraciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Valoraciones_Usuarios" Association="Self.FK_Valoraciones_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Valoraciones" EntitySet="Valoraciones" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

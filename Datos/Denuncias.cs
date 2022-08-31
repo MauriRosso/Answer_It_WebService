@@ -17,8 +17,10 @@ namespace Datos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Denuncias()
         {
-            this.DenunciasPreguntas = new HashSet<DenunciasPreguntas>();
-            this.DenunciasRespuestas = new HashSet<DenunciasRespuestas>();
+            this.DenunciasRecomendaciones = new HashSet<DenunciasRecomendaciones>();
+            this.DenunciasSolicitudRecomendaciones = new HashSet<DenunciasSolicitudRecomendaciones>();
+            this.DenunciasSolicitudValoraciones = new HashSet<DenunciasSolicitudValoraciones>();
+            this.DenunciasValoraciones = new HashSet<DenunciasValoraciones>();
         }
     
         public int id { get; set; }
@@ -26,8 +28,12 @@ namespace Datos
         public Nullable<int> reputacion_descontada { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DenunciasPreguntas> DenunciasPreguntas { get; set; }
+        public virtual ICollection<DenunciasRecomendaciones> DenunciasRecomendaciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DenunciasRespuestas> DenunciasRespuestas { get; set; }
+        public virtual ICollection<DenunciasSolicitudRecomendaciones> DenunciasSolicitudRecomendaciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DenunciasSolicitudValoraciones> DenunciasSolicitudValoraciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DenunciasValoraciones> DenunciasValoraciones { get; set; }
     }
 }

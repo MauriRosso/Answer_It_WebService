@@ -136,7 +136,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DenunciasApiController.cs" />
+    <Compile Include="Controllers\DenunciasPreguntasApiController.cs" />
+    <Compile Include="Controllers\DenunciasRespuestasApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MedallasApiController.cs" />
+    <Compile Include="Controllers\PreguntasApiController.cs" />
+    <Compile Include="Controllers\PrivilegiosApiController.cs" />
+    <Compile Include="Controllers\RespuestasApiController.cs" />
+    <Compile Include="Controllers\RolesApiController.cs" />
+    <Compile Include="Controllers\SeguidoresApiController.cs" />
+    <Compile Include="Controllers\TagsApiController.cs" />
     <Compile Include="Controllers\UsuariosApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -154,6 +164,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -199,7 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">
-      <Project>{0dbdded6-2743-4ed8-b39f-4c332efd9129}</Project>
+      <Project>{C79C54B3-8216-428C-BDAB-4E4BB0A3C209}</Project>
       <Name>Datos</Name>
     </ProjectReference>
   </ItemGroup>
